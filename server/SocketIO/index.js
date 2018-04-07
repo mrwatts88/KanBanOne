@@ -13,8 +13,19 @@ const createPart = function(part){
 
 const socketListeners = io => {
     io.on('connection', socket => {
-        socket.on('station_update', data => {
+
+        socket.on('order', data => {
             data.map(part => createPart(part))
+        });
+
+        socket.on('fulfillment', data => {
+            //todo
+            throw Error("Not implemented");
+        });
+
+        socket.on('shipment', data => {
+            //todo
+            throw Error("Not implemented");
         });
     });
 }
