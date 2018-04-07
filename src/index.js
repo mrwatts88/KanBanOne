@@ -4,9 +4,11 @@ import App from './components/App';
 import openSocket from 'socket.io-client';
 
 const socket = openSocket('http://localhost:8080');
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
+socket.emit('station_update',
+ {
+   '87878': 'blue',
+   '8374': 'red',
+   '298984': 'greens'
+ });
 
 ReactDOM.render(<App />, document.getElementById('app'));
