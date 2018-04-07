@@ -15,17 +15,17 @@ const socketListeners = io => {
     io.on('connection', socket => {
 
         socket.on('order', data => {
-            data.map(part => createPart(part))
+            console.log("Recieved and order for: " + data);
         });
 
         socket.on('fulfillment', data => {
             //todo
-            throw Error("Not implemented");
+            console.log("Recieved and order for: " + data);
         });
 
         socket.on('shipment', data => {
             //todo
-            throw Error("Not implemented");
+            console.log("Recieved and order for: " + data);
         });
     });
 }
