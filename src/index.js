@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-// import './WebSockets/index.js';
+import openSocket from 'socket.io-client';
 
-const WebSocket = require('ws');
-
-const ws = new WebSocket('ws://us-central1-kanbanone-9203d.cloudfunctions.net/app');
-
-ws.on('open', () => {
-  ws.send('somethingFromClint');
-});
-
-ws.on('message', data => {
-  console.log(data);
-});
+const socket = openSocket('http://localhost:8080');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
 
 ReactDOM.render(<App />, document.getElementById('app'));
