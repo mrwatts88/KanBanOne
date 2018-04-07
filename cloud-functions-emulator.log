@@ -1,0 +1,16 @@
+2018-04-07T18:22:54.566Z - info: User function triggered, starting execution
+2018-04-07T18:23:03.519Z - info: User function triggered, starting execution
+2018-04-07T18:23:51.570Z - info: Execution took 48058 ms, finished with status: 'crash'
+2018-04-07T18:23:51.586Z - info: Execution took 57034 ms, finished with status: 'crash'
+2018-04-07T18:23:52.241Z - info: User function triggered, starting execution
+2018-04-07T18:23:56.279Z - info: User function triggered, starting execution
+2018-04-07T18:23:58.758Z - info: User function triggered, starting execution
+2018-04-07T18:24:02.921Z - info: User function triggered, starting execution
+2018-04-07T18:24:13.802Z - info: User function triggered, starting execution
+2018-04-07T18:24:13.813Z - info: Execution took 10 ms, user function completed successfully
+2018-04-07T18:24:14.021Z - info: User function triggered, starting execution
+2018-04-07T18:24:23.084Z - info: Execution took 9064 ms, finished with status: 'crash'
+2018-04-07T18:24:23.088Z - info: Execution took 20170 ms, finished with status: 'crash'
+2018-04-07T18:24:23.092Z - info: Execution took 24334 ms, finished with status: 'crash'
+2018-04-07T18:24:23.094Z - info: Execution took 26817 ms, finished with status: 'crash'
+2018-04-07T18:24:23.097Z - info: Execution took 31266 ms, finished with status: 'crash'
