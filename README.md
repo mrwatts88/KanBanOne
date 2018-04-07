@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React Webpack Starter
 > This is a boilerplate for React 16 & Webpack 4. It includes webpack-dev-server and a build script
 
@@ -28,3 +29,6 @@ Brad Traversy
 ### License
 
 This project is licensed under the MIT License
+=======
+# KanBanOne
+>>>>>>> f8b8c08c00032fcca8957612064740e7f2704e21
