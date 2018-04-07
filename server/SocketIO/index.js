@@ -1,11 +1,22 @@
+const Part = require('../Models/Part.js').Part;
 
-const socketListeners = (io) => {
-    io.on('connection', function (socket) {
+const socketListeners = io => {
+    io.on('connection', socket => {
+        socket.on('station_update', data => {
+            
+            let parts = data.map( part => new Part({
+                        partNumber:part.partNumber,
+                        ledColor:part.ledColor
+                    }
+                );
 
-        socket.on('station_update', function (data) {
-            console.log(data);
+                part.save((err, part) => {
+                    if (err) return console.error(err);                    
+                });
+            )}
+        );
+
         });
-
 
     });
 }
