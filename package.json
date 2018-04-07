@@ -1,13 +1,17 @@
 {
   "name": "react_webpack_starter",
   "version": "1.0.0",
-  "description": "Boilerplate for React apps",
+  "description": "KanBanOne",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
+<<<<<<< HEAD
     "build": "webpack --mode production"
+=======
+    "build": "webpack --mode development"
+>>>>>>> 0d5efce5b563126caa03c3db5d33206d01f80b24
   },
-  "author": "Brad Traversy",
+  "author": "",
   "license": "MIT",
   "dependencies": {
     "react": "^16.2.0",
