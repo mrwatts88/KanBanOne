@@ -9,39 +9,39 @@ class App extends Component {
       order: [],
       transit1: [],
       transit2: [],
-      fulfillment: []
+      fulfilled: []
     }
 
     this.order = this.order.bind(this);
     this.transit1 = this.transit1.bind(this);
     this.transit2 = this.transit2.bind(this);
-    this.fulfillment = this.fulfillment.bind(this);
+    this.fulfilled = this.fulfilled.bind(this);
 
     socket.on('order_s', msg => {
       console.log(msg);
       this.setState({
-        order: msg
+        order: [...this.state.order, msg]
       });
     });
 
     socket.on('transit1_s', msg => {
       console.log(msg);
       this.setState({
-        transit1: msg
+        transit1: [...this.state.transit1, msg]
       });
     });
 
     socket.on('transit2_s', msg => {
       console.log(msg);
       this.setState({
-        transit2: msg
+        transit2: [...this.state.transit2, msg]
       });
     });
 
-    socket.on('fulfillment_s', msg => {
+    socket.on('fulfilled_s', msg => {
       console.log(msg);
       this.setState({
-        fulfillment: msg
+        fulfilled: [...this.state.fulfilled, msg]
       });
     });
   }
@@ -53,7 +53,7 @@ class App extends Component {
         'partNumber': '87647',
         'ledColor': 'red',
         'id': '567',
-        'station': 5,
+        'station': 5
       }
     );
   }
@@ -63,8 +63,9 @@ class App extends Component {
       {
         'partNumber': '34547',
         'ledColor': 'yellow',
-        'id': '20957',
+        'id': '567',
         'station': 5,
+        'state': ''
       }
     );
   }
@@ -74,19 +75,21 @@ class App extends Component {
       {
         'partNumber': '34547',
         'ledColor': 'yellow',
-        'id': '20957',
-        'station': 5
+        'id': '567',
+        'station': 5,
+        'state': ''
       }
     );
   }
 
-  fulfillment() {
-    socket.emit('fulfillment',
+  fulfilled() {
+    socket.emit('fulfilled',
       {
         'partNumber': '5647',
         'ledColor': 'blue',
-        'id': '0257',
+        'id': '567',
         'station': 5,
+        'state': ''
       }
     );
   }
@@ -105,28 +108,28 @@ class App extends Component {
             <button onClick={this.transit2}>Transit 2</button>
           </div>
           <div className="col-md-3">
-            <button onClick={this.fulfillment}>Fulfillment</button>
+            <button onClick={this.fulfilled}>Fulfillment</button>
           </div>
         </div>
         <div className="row">
           <div className="col-md-3">
             <ul>
-              {this.state.order.map(el => <li>{el}</li>)}
+              {this.state.order.map(el => <li>{el.partNumber}</li>)}
             </ul>
           </div>
           <div className="col-md-3">
             <ul>
-              {this.state.transit1.map(el => <li>{el}</li>)}
+              {this.state.transit1.map(el => <li>{el.partNumber}</li>)}
             </ul>
           </div>
           <div className="col-md-3">
             <ul>
-              {this.state.transit2.map(el => <li>{el}</li>)}
+              {this.state.transit2.map(el => <li>{el.partNumber}</li>)}
             </ul>
           </div>
           <div className="col-md-3">
             <ul>
-              {this.state.fulfillment.map(el => <li>{el}</li>)}
+              {this.state.fulfilled.map(el => <li>{el.partNumber}</li>)}
             </ul>
           </div>
         </div>
