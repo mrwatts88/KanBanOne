@@ -14,6 +14,7 @@ class Part {
         this.number = number;
         this.id = id;
         this.state = states.fulfilled;
+        this.ledColor = 'blue';
     }
 
     changeState(){
@@ -45,7 +46,7 @@ class Part {
 
 //module.exports.Part = Part;
 
-module.exports.Part = {
+module.exports = {
     mongoose_part: mongoose.model('Part', partSchema),
     Part: Part
 }

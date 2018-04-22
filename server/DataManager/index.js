@@ -1,30 +1,22 @@
+let p = require('../Models/Part')
+
 class DataManager {
     constructor() {
-        this.Parts = [];
+        this.Parts = [new p.Part('14DH-14',001), new p.Part('14DH-20', 002)];
     }
 
-    orderPart(part) {
-        part.state = 'ordered';
-        this.Parts.push(part);
-    }
-
-    changeState(part, state) {
-        if (state === 'ordered') {
-            this.orderPart(part);
-            return;
-        }
-
-        let foundPart = this.Parts.find((_part) => {
-            console.log(part.id, _part.id);
+    changePartSate(part){
+        let p = this.Parts.find((_part) => {
             return part.id === _part.id;
-        });
+        })
 
-
-        console.log(foundPart);
-        foundPart.state = state;
-        for (let p of this.Parts)
-            console.log(p);
+        p.changeState();
     }
+
+    addPart(part){
+        this.Parts.push(new p.Part(part.number, part.id));
+    }
+
 
     getParts() {
         return this.Parts;

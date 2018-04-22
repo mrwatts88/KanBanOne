@@ -1,5 +1,10 @@
-const Part = require('../Models/Part.js').Part;
-const DataManager = require('../DataManager/index.js');
+var net = require('net');
+const Part = require('../Models/Part.js')
+const globals = require('../index.js')
+
+// const HOST = '127.0.0.1';
+const HOST = '10.0.0.4';
+const PORT = 8081;
 
 const createPart = function (part) {
     let p = new Part({
@@ -12,7 +17,7 @@ const createPart = function (part) {
     });
 }
 
-const socketListeners = io => {
+const webSocketListeners = io => {
     io.on('connection', socket => {
         let dm = new DataManager();
 
@@ -57,4 +62,38 @@ const socketListeners = io => {
     });
 }
 
-module.exports = socketListeners;
+const dataSockets = () => {
+    
+    // Create a server instance, and chain the listen function to it
+    // The function passed to net.createServer() becomes the event handler for the 'connection' event
+    // The sock object the callback function receives UNIQUE for each connection
+    net.createServer(sock => {
+
+        // We have a connection - a socket object is assigned to the connection automatically
+        console.log('CONNECTED: ' + sock.remoteAddress + ':' + sock.remotePort);
+
+        // Add a 'data' event handler to this instance of socket
+        sock.on('data', data => {
+
+            console.log('DATA ' + sock.remoteAddress + ': ' + data);
+            globals.dataManager.changePartSate(data);
+
+            // Write the data back to the socket, the client will receive it as data from the server
+            sock.write('You said "' + data + '"');
+        });
+
+        // Add a 'close' event handler to this instance of socket
+        sock.on('close', data => {
+            console.log('CLOSED: ' + sock.remoteAddress + ' ' + sock.remotePort);
+        });
+
+    }).listen(PORT, HOST);
+
+    console.log('Server listening on ' + HOST + ':' + PORT);
+}
+
+module.exports = {
+    webSocketListeners,
+    dataSockets
+
+}
