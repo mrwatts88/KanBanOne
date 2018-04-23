@@ -6,7 +6,11 @@ var partSchema = mongoose.Schema({
  });
 
 const states = {
-    ordered, transit1, transit2, fulfilled, unknown 
+    ordered: 'ordered',
+    transit1: 'transit1',
+    transit2: 'transit2',
+    fulfilled: 'fulfilled',
+    unknown: 'unknown' 
 }
 
 class Part {

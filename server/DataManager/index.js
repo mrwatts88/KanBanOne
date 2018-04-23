@@ -2,7 +2,7 @@ let p = require('../Models/Part')
 
 class DataManager {
     constructor() {
-        this.Parts = [new p.Part('14DH-14',001), new p.Part('14DH-20', 002)];
+        this.Parts = [new p.Part('14DH-14',1), new p.Part('14DH-20', 2)];
     }
 
     changePartSate(part){

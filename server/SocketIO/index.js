@@ -3,7 +3,8 @@ const Part = require('../Models/Part.js')
 const globals = require('../index.js')
 
 // const HOST = '127.0.0.1';
-const HOST = '10.0.0.4';
+// const HOST = '192.168.1.15';
+const HOST = '10.0.0.5';
 const PORT = 8081;
 
 const createPart = function (part) {
@@ -19,8 +20,6 @@ const createPart = function (part) {
 
 const webSocketListeners = io => {
     io.on('connection', socket => {
-        let dm = new DataManager();
-
         //Message Origin: Comes from the station shelf
         //Message Destination: To the cart and inventory
         //Why: A bin was empty and placed on top
